@@ -1,0 +1,136 @@
+:root{--gold:#ffb48a;--bg:#17124a;--fg:#efeaff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:1.05rem/1.7 "Barlow","Source Sans 3",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,.year{font-family:"IM Fell DW Pica",Georgia,serif;font-weight:400}
+#bar{position:fixed;left:0;top:0;height:4px;width:100%;background:var(--gold);transform-origin:0 50%;transform:scaleX(0);z-index:5}
+#year{position:fixed;left:3vw;bottom:2vh;font-size:clamp(5rem,17vw,15rem);line-height:1;opacity:.14;pointer-events:none;z-index:1;font-family:"IM Fell DW Pica",Georgia,serif}
+.hero{height:100vh;display:grid;place-items:center;text-align:center;position:relative;z-index:2}
+.hero h1{margin:0;font-size:clamp(3.2rem,13vw,11rem);line-height:.95;font-style:italic;will-change:transform,opacity}
+.hero p{margin:1.2rem auto 0;max-width:30rem;padding:0 1.5rem}
+.cue{position:absolute;bottom:4vh;left:50%;width:1px;height:56px;background:var(--gold);transform-origin:top;animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.ch{min-height:100vh;display:flex;align-items:center;padding:12vh 6vw;position:relative;z-index:2}
+.ch:nth-of-type(even){justify-content:flex-end}
+.in{max-width:34rem}
+.in h2{font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.05;margin:0 0 1rem}
+.in p{margin:0;max-width:34rem}
+.in .tag{display:block;margin-top:1.1rem;color:var(--gold);font-weight:600}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+.ic{display:block;width:96px;height:96px;margin-bottom:1rem;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hat{width:min(46vw,300px);height:auto;margin:0 auto 1rem;display:block;stroke:var(--gold);fill:none;stroke-width:2.5;stroke-linejoin:round}
+.hero{overflow:hidden;color:#f4ecd8}
+.hero>div:not(.hbg){position:relative;z-index:3}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(23,18,74,.55),rgba(23,18,74,.2) 45%,var(--bg))}
+.hbg{position:absolute;inset:-6% 0 0;will-change:transform}
+.hbg img{width:100%;height:100%;object-fit:cover;object-position:62% 40%;display:block;transform:scale(1.18);animation:kb 24s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+@keyframes tin{from{letter-spacing:.32em}to{letter-spacing:0}}
+#title{animation:tin 2.2s cubic-bezier(.2,.7,.2,1) both;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.hat{display:none}
+.in h2::after{content:"";display:block;height:2px;width:0;background:var(--gold);margin-top:.7rem;transition:width 1.3s .3s cubic-bezier(.2,.7,.2,1)}
+.in.on h2::after{width:4.5rem}
+.ch.hi{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:5vw;align-items:center}
+.ch.hi:nth-of-type(even) .in{order:2}
+.ph{margin:0;position:relative;height:clamp(300px,68vh,620px);overflow:hidden;clip-path:inset(0 100% 0 0);transition:clip-path 1.4s cubic-bezier(.7,0,.2,1)}
+.ch:nth-of-type(even) .ph{clip-path:inset(0 0 0 100%)}
+.ph.on,.ch:nth-of-type(even) .ph.on{clip-path:inset(0 0 0 0)}
+.ph img,.band img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover;will-change:transform;transform:scale(1.15)}
+.ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.6rem 1rem .8rem;font-size:.85rem;color:#f1ead8;background:linear-gradient(transparent,rgba(0,0,0,.78))}
+.band{height:85vh;position:relative;overflow:hidden;z-index:2;background:#000}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.05) 70%)}
+.bt{position:absolute;left:6vw;bottom:9vh;max-width:30rem;z-index:3;color:#f4ecd8;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.bt h3{font:400 clamp(2rem,5vw,3.6rem)/1.05 "IM Fell DW Pica",Georgia,serif;margin:0 0 .6rem}
+.bt p{margin:0}.bt small{display:block;margin-top:.8rem;opacity:.8}
+@media(max-width:800px){.ch.hi{grid-template-columns:1fr}.ch.hi:nth-of-type(even) .in{order:0}}
+@media(prefers-reduced-motion:reduce){.ph,.ch:nth-of-type(even) .ph{clip-path:none;transition:none}.hbg img,#title{animation:none}.in h2::after{width:4.5rem;transition:none}}
+.w{display:inline-block;opacity:0;transform:translateY(.7em);filter:blur(5px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .7s ease;transition-delay:calc(var(--d,0s) + min(var(--i),50)*20ms)}
+.on .w{opacity:1;transform:none;filter:none}
+.wm{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.in h2 .w,.bt h3 .w{opacity:1;filter:none;transform:translateY(112%) rotate(3deg);transform-origin:0 100%;transition:transform .95s cubic-bezier(.2,.7,.2,1);transition-delay:calc(min(var(--i),12)*90ms)}
+.on h2 .w,.on h3 .w{transform:none}
+.hero p{--d:1.5s}
+@media(prefers-reduced-motion:reduce){.w,.in h2 .w,.bt h3 .w{opacity:1;transform:none;filter:none;transition:none}}
+.rv[data-d="up"]:not(.on){transform:translateY(-34px)}
+.in[data-d="up"]:not(.on) .w{transform:translateY(-.7em)}
+.in[data-d="up"]:not(.on) h2 .w,.bt[data-d="up"]:not(.on) h3 .w{transform:translateY(-112%) rotate(-3deg)}
+@media(prefers-reduced-motion:reduce){.rv[data-d="up"]:not(.on){transform:none}.in[data-d="up"]:not(.on) .w,.in[data-d="up"]:not(.on) h2 .w{transform:none}}
+.side{list-style:none;margin:1.6rem 0 0;padding:0 0 0 1rem;border-left:2px solid var(--gold);font-size:.98rem;line-height:1.5}
+.side li{margin:.4rem 0}
+.stick .side{position:absolute;right:6vw;top:22vh;max-width:17rem;margin:0}
+@media(max-width:800px){.stick .side{position:static;margin-top:1rem}}
+#legbg{opacity:.4;object-position:50% 30%}
+.nav{position:fixed;inset:0 0 auto 0;z-index:6;display:flex;align-items:center;justify-content:space-between;padding:calc(1.1rem + env(safe-area-inset-top,0px)) 5vw 2.2rem;font:500 .95rem "Barlow",sans-serif;color:var(--fg);background:linear-gradient(var(--bg),transparent);pointer-events:none}
+.nav a{color:inherit;text-decoration:none;pointer-events:auto;cursor:pointer}
+.nav .brand{font-size:1.15rem;letter-spacing:.02em}
+.nav .links{display:flex;gap:2.4rem}
+.nav .links a{opacity:.8;transition:opacity .3s}.nav .links a:hover{opacity:1}
+.nav .reg{border:1px solid currentColor;padding:.55rem 1.3rem;transition:background .3s,color .3s}
+.nav .reg:hover{background:var(--fg);color:var(--bg)}
+@media(max-width:700px){.nav .links{display:none}}
+.hero{display:flex;align-items:flex-end;justify-content:flex-start;text-align:left;padding:0 6vw 11vh}
+.hero h1{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-style:normal;font-weight:700;font-size:clamp(5rem,23vw,20rem);line-height:.84;text-transform:uppercase;transform-origin:0 100%;background:linear-gradient(180deg,#fff 35%,#ffc7a3);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+@keyframes sign{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 -2% 0 0)}}
+.hero h1{font-family:"Pinyon Script","Snell Roundhand",cursive;font-weight:400;text-transform:none;font-size:clamp(4.5rem,19vw,16rem);line-height:1.1;padding:.05em .2em .15em 0}
+#title{animation:sign 2.6s cubic-bezier(.6,0,.2,1) .3s both;text-shadow:none}
+.nav .brand{font-family:"Pinyon Script",cursive;font-size:1.9rem;letter-spacing:0}
+.hero p{margin:1.2rem 0 0;max-width:24rem;padding:0}
+.btn{display:inline-block;margin-top:1.4rem;padding:.75rem 1.2rem;background:#fff;color:#17124a;font:500 .9rem "Barlow",sans-serif;text-decoration:none;animation:fadein .9s 2.3s both}
+@keyframes fadein{from{opacity:0;transform:translateY(14px)}}
+.cue{left:auto;right:6vw}
+h2{font-family:"Gilda Display","IM Fell DW Pica",Georgia,serif;font-weight:400;letter-spacing:-.015em}
+.in h2{font-size:clamp(2.6rem,7vw,5.4rem);line-height:1}
+.in h2::after{height:1px;background:currentColor;opacity:.55;margin-top:1.1rem}
+.in.on h2::after{width:min(100%,24rem)}
+.ic{display:none}
+.kick{display:block;font:500 .78rem/1 "Barlow",sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:.65;margin-bottom:1.1rem}
+.in .tag{font-weight:500;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:inherit;margin-top:1.6rem}
+.tag::before{content:"";display:inline-block;width:2.4rem;height:1px;background:currentColor;vertical-align:middle;margin-right:.8rem}
+#year{font-family:"Barlow Condensed","IM Fell DW Pica",sans-serif;font-weight:700}
+.ch,.end{overflow:hidden}
+.ch::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 50% at 85% 15%,rgba(255,140,90,.2),transparent 60%),radial-gradient(55% 60% at 8% 95%,rgba(120,110,255,.25),transparent 60%)}
+@media(prefers-reduced-motion:reduce){.btn{animation:none}}
+html{-webkit-text-size-adjust:100%}
+.ch,.stick{padding-left:max(6vw,calc((100vw - 1400px)/2));padding-right:max(6vw,calc((100vw - 1400px)/2))}
+.nav{padding-left:max(5vw,env(safe-area-inset-left,0px),calc((100vw - 1500px)/2));padding-right:max(5vw,env(safe-area-inset-right,0px),calc((100vw - 1500px)/2))}
+.bt{right:6vw}
+@supports(height:100svh){.hero,.stick{height:100svh}.ch{min-height:100svh}.band{height:85svh}.ph{height:clamp(300px,68svh,620px)}}
+@media(max-width:1100px){.stick .side{position:static;max-width:34rem;margin-top:1rem}}
+@media(max-width:1000px){.nav .links{gap:1.3rem}}
+@media(max-width:800px){.w{filter:none!important}.stick{justify-content:flex-start;padding-top:calc(5.2rem + env(safe-area-inset-top,0px))}.stick .in h2{font-size:clamp(2.2rem,9vw,3rem)}.stick .in p{font-size:.95rem}.hero h1{font-size:clamp(4rem,20vw,9rem)}.gal .ph{height:clamp(180px,28vh,260px)}}
+@media(max-width:700px){.stick .side{display:none}.ch{padding-top:9vh;padding-bottom:9vh}.side{font-size:.92rem}.band .bt{bottom:6vh}}
+@media(max-height:520px){.stick .in p,.stick .side{display:none}.stick{padding-top:4.2rem}.stick .in h2{font-size:2rem}.hero h1{font-size:clamp(3.5rem,14vw,7rem)}.ph{height:clamp(220px,70vh,420px)}}
+@media(min-width:1800px){body{font-size:1.15rem}}
+.cbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:.3;z-index:-1;pointer-events:none;-webkit-mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent)}
+.credit{margin:3rem 0 0;font-size:.95rem;color:var(--gold)}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:min(94vw,1000px);margin-top:3rem}
+.gal .ph{height:clamp(170px,30vh,300px)}
+@media(max-width:700px){.gal{grid-template-columns:1fr}}
+.tbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.17;filter:grayscale(1);z-index:-1;pointer-events:none}
+.tall{height:340vh;position:relative;z-index:2}
+.stick{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 6vw}
+.stick .in{max-width:40rem}
+.stick h2{margin-bottom:.6rem}
+svg{width:100%;max-width:900px;height:auto;margin-top:1rem;overflow:visible}
+.lab{font:600 11px "Source Sans 3",sans-serif;fill:currentColor;opacity:0;transition:opacity .5s}
+.lab.on{opacity:1}
+#count{font-family:"IM Fell DW Pica",Georgia,serif;font-size:clamp(2rem,6vw,3.6rem);color:#9b2c2c}
+.end{min-height:70vh;display:grid;place-items:center;text-align:center;padding:10vh 6vw;position:relative;z-index:2}
+.end p{max-width:32rem;margin:0 auto}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(max-width:640px){.ch,.ch:nth-of-type(even){justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.cue{animation:none}}
+
+/* ---- mobile performance ---- */
+@media(max-width:800px),(hover:none){
+ .cbg{-webkit-mask-image:none;mask-image:none;transform:none!important;opacity:.22}
+ .hbg img{animation:none;transform:none}
+ .ph{clip-path:none!important;transition:none;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+ .ph.on{opacity:1;transform:none}
+ .ph img,.band img{top:0;height:100%;transform:none;will-change:auto}
+ .w,.in h2 .w,.bt h3 .w{transition-delay:0s!important}
+ .ch{opacity:1!important;transform:none!important}
+ .hero h1,#title{will-change:auto}
+ #year{will-change:auto}
+}
